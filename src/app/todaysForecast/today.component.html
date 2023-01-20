@@ -1,0 +1,18 @@
+<p class="mt-10 xl:mt-20 pl-2 xl:text-xl text-sm">Todays forecast</p>
+
+<div class="flex flex-row overflow-x-auto lg:justify-between " >
+  <ion-card color="secondary" id="play" *ngFor="let data of fakeData; let index=index" (click)="toggleExtraInfo(index)"  [ngClass]="{'border-neutral-200' : !hideExtraInfo[index]}" class=" xl:mt-4 max-w-fit min-w-max p-2 grid justify-items-center border-2 border-neutral-900 hover:border-neutral-200"> 
+    <ion-card-title class="text-sm xl:text-lg mb-1 mx-5">{{getNextHour((index + 1) * 2)}}</ion-card-title>
+      <app-wave-icon class="w-10 md:w-14 lg:w-18 xl:w-20" [breakerType]="breakerTypes[index]"></app-wave-icon>
+    <ion-card-subtitle class="text-xs xl:text-sm uppercase">{{breakerTypes[index]}}</ion-card-subtitle>
+  </ion-card>
+</div>
+<div [hidden] = "!extraInfoOpen" class="animate-[appear_0.5s] md:animate-[appear_1s] border-2 border-neutral-600 rounded-xl mt-2 mx-2">
+    <ion-card id="index" [hidden] = "hideExtraInfo[index]" *ngFor="let data of fakeData; let index=index" class="bg-inherit grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 justify-end md:justify-items-center items-center">
+    <div *ngFor="let detail of data.details | keyvalue" class="px-3 whitespace-nowrap max-w-fit animate-[fadeIn_1.5s]">
+      <p class="xl:text-lg text-sm font-bold text-white">{{detail.value}}</p>
+      <p class="xl:text-sm text-xs mb-2">{{detail.key}}</p>
+    </div>
+  </ion-card>
+</div>
+

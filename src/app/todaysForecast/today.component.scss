@@ -1,0 +1,10 @@
+#info{
+    height: 0px;
+    scale: 0;
+    background-color: blue;
+}
+#info.verticalTranslate{
+    transition: 5s;
+    height: max-content;
+    scale: 100%
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Schurf",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
