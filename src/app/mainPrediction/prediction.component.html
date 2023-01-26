@@ -1,19 +1,19 @@
 <section class="grid md:grid-cols-2">
   <div>
-    <ion-card class="min-h-full grid grid-cols-2 items-center justify-items-center bg-inherit md:border-r-2 border-neutral-600 rounded-none">
+    <ion-card class="shadow-none min-h-full grid grid-cols-2 items-center justify-items-center bg-inherit md:border-r-2 rounded-none border-[var(--ion-color-shade)]">
       <app-wave-icon class="max-w-full w-60" [breakerType]="breakerType"></app-wave-icon>
       <div>
         <h1 class="text-3xl md:text-5xl mb-1 text-white uppercase">{{breakerType}}</h1>
-        <h2 class="text-xl md:text-3xl">{{level}}</h2>
+        <h2 class="text-xl md:text-3xl text-sky-700">{{level}}</h2>
       </div>
     </ion-card>
   </div>
 
   <div>
-    <ion-card class="pt-2 mb-0 min-h-full md:p-4 grid grid-cols-3 lg:grid-cols-4 grid-rows-2 items-start justify-items-start bg-inherit border-y-2 border-neutral-600 md:border-none rounded-none">
+    <ion-card class="shadow-none border-[var(--ion-color-shade)] pt-2 mb-0 min-h-full md:p-4 grid grid-cols-3 lg:grid-cols-4 grid-rows-2 items-start justify-items-start bg-inherit border-y-2 md:border-none rounded-none">
       <div *ngFor="let detail of data.details | keyvalue" >
         <p class="xl:text-xl md:text-lg text-sm font-bold text-white">{{detail.value}}</p>
-        <p class="xl:text-lg md:text-sm text-xs mb-2">{{detail.key}}</p>
+        <p class="xl:text-lg md:text-sm text-xs mb-2 text-sky-700">{{detail.key}}</p>
       </div>
     </ion-card>
   </div>
