@@ -9,7 +9,7 @@ import { Platform } from '@ionic/angular';
 })
 export class NavigationComponent implements OnInit {
   isMobile$ = this.platform.is('mobile');
-  isLoggedIn = false;
+  isLoggedIn = true;
 
   constructor(private platform: Platform) { }
 

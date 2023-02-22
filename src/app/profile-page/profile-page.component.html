@@ -1,0 +1,43 @@
+<ion-header class="bg-[var(--ion-color-primary)] flex justify-center flex-col items-center">
+  <ion-toolbar color="primary">
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+  <ion-icon name="person-circle-outline" class="w-20 h-20 m-5"></ion-icon>
+</ion-header>
+
+<ion-content color="primary" class="">
+  <ion-item color="primary" class="mt-5 lg:mx-96">
+    <ion-label position="floating">Email</ion-label>
+    <ion-input [(ngModel)]="email" type="email" required disabled></ion-input>
+  </ion-item>
+
+  <ion-item color="primary" class="lg:mx-96">
+    <ion-label position="floating">Old password</ion-label>
+    <ion-input [(ngModel)]="old_password" type="password" required></ion-input>
+  </ion-item>
+
+  <ion-item color="primary" class="lg:mx-96">
+    <ion-label position="floating">New password</ion-label>
+    <ion-input [(ngModel)]="password" type="password" required></ion-input>
+  </ion-item>
+
+  <ion-item color="primary" class="lg:mx-96">
+    <ion-label position="floating">Confirm password</ion-label>
+    <ion-input [(ngModel)]="confirm_password" type="password" required></ion-input>
+  </ion-item>
+
+  <ion-list class="mt-5 md:p-0 lg:mx-96">
+    <ion-item color="primary" class="">
+      <ion-select interface="popover" placeholder="Select skill level">
+        <ion-select-option value="beginner">Beginner</ion-select-option>
+        <ion-select-option value="intermediate">Intermediate</ion-select-option>
+        <ion-select-option value="advanced">Advanced</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-button class="mt-12 mx-5 lg:mx-96" type="submit" expand="block" color="light" (click)="onSubmit()">
+    Save changes
+  </ion-button>
+
+</ion-content>
