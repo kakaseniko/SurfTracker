@@ -1,7 +1,7 @@
 <p class="mt-10 xl:mt-20 pl-2 xl:text-xl text-sm">Todays forecast</p>
 
 <div class="flex flex-row overflow-x-auto lg:justify-between " >
-  <ion-card color="secondary"  *ngFor="let data of fakeData; let index=index" (click)="toggleExtraInfo(index)"  [ngClass]="{'border-[var(--ion-color-primary-shade)]' : !hideExtraInfo[index]}" class=" xl:mt-4 max-w-fit min-w-max p-2 border-2 border-[var(--ion-color-secondary)] grid justify-items-center hover:border-[var(--ion-color-shade)]"> 
+  <ion-card color="secondary"  *ngFor="let data of fakeData; let index=index" (click)="toggleExtraInfo(index)"  [ngClass]="{'border-sky-700' : !hideExtraInfo[index]}" class=" xl:mt-4 max-w-fit min-w-max p-2 border-2 border-[var(--ion-color-secondary)] grid justify-items-center hover:border-[var(--ion-color-shade)]"> 
     <ion-card-title class="text-sm xl:text-lg mb-1 mx-5">{{getNextHour((index + 1) * 2)}}</ion-card-title>
       <app-wave-icon class="w-10 md:w-14 lg:w-18 xl:w-20 my-2 md:my-4" [breakerType]="breakerTypes[index]"></app-wave-icon>
     <ion-card-subtitle class="text-xs xl:text-sm uppercase">{{breakerTypes[index]}}</ion-card-subtitle>

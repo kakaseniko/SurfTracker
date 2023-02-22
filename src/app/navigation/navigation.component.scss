@@ -1,0 +1,14 @@
+ion-segment{
+    --background: var(--ion-color-dark);
+}
+ion-segment-button{
+    --color: var(--ion-color-primary-contrast);
+    --color-checked: rgb(217 70 239);//var(--ion-color-primary-shade);
+}
+ion-tab-bar{
+    --background: var(--ion-color-dark);
+}
+ion-tab-button{
+    --color: rgb(229 231 235);
+    --color-selected: rgb(217 70 239);//var(--ion-color-primary-shade);
+}

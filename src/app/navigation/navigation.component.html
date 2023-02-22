@@ -1,0 +1,58 @@
+<!--Mobile-->
+<ion-tabs *ngIf="isMobile$">
+
+  <ion-tab-bar  slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon name="partly-sunny"></ion-icon>
+      <ion-label>Forecast</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="login">
+      <ion-icon name="bar-chart"></ion-icon>
+      <ion-label>Logs</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="add">
+      <ion-icon name="add-circle"></ion-icon>
+      <ion-label>Add</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="settings">
+      <ion-icon name="settings"></ion-icon>
+      <ion-label>Settings</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+</ion-tabs>
+
+<!--Web-->
+<ion-toolbar *ngIf="!isMobile$">
+  <ion-segment *ngIf="!isLoggedIn" value="signUpIn">
+    <ion-segment-button value="forecast">
+      Forecast
+    </ion-segment-button>
+    <ion-segment-button value="signUp">
+      Sign up
+    </ion-segment-button>
+    <ion-segment-button value="signIn">
+      Log in
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-segment *ngIf="isLoggedIn" value="forecastLogs">
+    <ion-segment-button value="forecast">
+      Forecast
+    </ion-segment-button>
+    <ion-segment-button value="logs">
+      Logs
+    </ion-segment-button>
+    <ion-segment-button value="profile">
+      <ion-icon name="person-circle-outline"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
