@@ -5,23 +5,23 @@
   <ion-icon name="person-circle-outline" class="w-20 h-20 m-5"></ion-icon>
 </ion-header>
 
-<ion-content color="primary">
-  <ion-item color="primary" class="mt-5">
+<ion-content color="primary" class="">
+  <ion-item color="primary" class="mt-5 lg:mx-96">
     <ion-label position="floating">Email</ion-label>
     <ion-input [(ngModel)]="email" type="text" required></ion-input>
   </ion-item>
 
-  <ion-item color="primary" class="">
+  <ion-item color="primary" class="lg:mx-96">
     <ion-label position="floating">Password</ion-label>
     <ion-input [(ngModel)]="password" type="password" required></ion-input>
   </ion-item>
-  <ion-button class="ion-margin-top mx-5" type="submit" expand="block" color="light" (click)="onSubmit()">
+  <ion-button class="ion-margin-top mx-5 lg:mx-96" type="submit" expand="block" color="light" (click)="onSubmit()">
     Sign in
   </ion-button>
 
-  <ion-item color="primary" class="ion-text-center">
+  <ion-item color="primary" class="ion-text-center lg:mx-96">
     <ion-label>Or</ion-label>
   </ion-item>
 
-  <ion-button class="mx-5" color="light" expand="block" fill="outline" [routerLink]="['/signup']">Create account</ion-button>
+  <ion-button class="mx-5 lg:mx-96" color="light" expand="block" fill="outline" [routerLink]="['/signup']">Create account</ion-button>
 </ion-content>

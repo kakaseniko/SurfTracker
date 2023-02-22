@@ -33,19 +33,19 @@
 <!--Web-->
 <ion-toolbar *ngIf="!isMobile$">
   <ion-segment *ngIf="!isLoggedIn" value="signUpIn">
-    <ion-segment-button value="forecast">
+    <ion-segment-button value="forecast" routerLink="/">
       Forecast
     </ion-segment-button>
-    <ion-segment-button value="signUp">
+    <ion-segment-button value="signup" routerLink="/signup">
       Sign up
     </ion-segment-button>
-    <ion-segment-button value="signIn">
+    <ion-segment-button value="login" routerLink="/login">
       Log in
     </ion-segment-button>
   </ion-segment>
 
   <ion-segment *ngIf="isLoggedIn" value="forecastLogs">
-    <ion-segment-button value="forecast">
+    <ion-segment-button value="forecast" routerLink="/">
       Forecast
     </ion-segment-button>
     <ion-segment-button value="logs">
