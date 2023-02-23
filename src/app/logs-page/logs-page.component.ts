@@ -11,4 +11,8 @@ export class LogsPageComponent implements OnInit {
 
   ngOnInit() {}
 
+  onRatingUpdated(rating: number) {
+    console.log(`New rating: ${rating}`);
+  }
+  
 }

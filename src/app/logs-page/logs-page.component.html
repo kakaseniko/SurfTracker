@@ -1,3 +1,70 @@
-<p>
-  logs-page works!
-</p>
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Filter</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-menu-toggle>
+      <ion-button class="mb-5"><ion-icon name="close-outline"></ion-icon></ion-button>
+    </ion-menu-toggle>
+
+    <ion-list>
+      <ion-item>
+        <ion-icon name="earth-outline"></ion-icon>
+        <ion-select interface="popover" placeholder="Country">
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="oranges">Oranges</ion-select-option>
+          <ion-select-option value="bananas">Bananas</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-select interface="popover" placeholder="Spot">
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="oranges">Oranges</ion-select-option>
+          <ion-select-option value="bananas">Bananas</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <div class="flex flex-row ml-5 mt-5">
+      <ion-icon name="calendar-outline" size="large"></ion-icon>
+      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+      <ion-modal [keepContentsMounted]="true" class="text-black">
+        <ng-template>
+          <ion-datetime id="datetime" presentation="month-year"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </div>
+
+    <div class="ml-5 mt-5">
+      <app-star-rating [currentRating]="0" (ratingUpdated)="onRatingUpdated($event)" ></app-star-rating>
+    </div>
+
+    <ion-item class="mt-5">
+      <ion-checkbox slot="start"></ion-checkbox>
+      <ion-label>TOP 10</ion-label>
+    </ion-item>
+
+    <ion-button expand="block" class="mt-20">Apply filters</ion-button>
+
+  </ion-content>
+
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Logs</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-menu-toggle>
+      <ion-button><ion-icon name="options-outline"></ion-icon></ion-button>
+    </ion-menu-toggle>
+  </ion-content>
+</div>
