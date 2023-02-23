@@ -1,4 +1,4 @@
 <div class="star-rating">
   <ion-icon *ngFor="let star of stars" name="star" [style.color]="star <= currentRating ? 'gold' : 'gray'"
-            (click)="updateRating(star)" size="large"></ion-icon>
+            [ngClass]="{ 'clickable': clickable }" (click)="clickable && updateRating(star)" size="large"></ion-icon>
 </div>
