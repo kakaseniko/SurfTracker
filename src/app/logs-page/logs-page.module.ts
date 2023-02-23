@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LogsPageComponent } from './logs-page.component';
 import { StarRatingModule } from '../star-rating/star-rating.module';
+import { LoggedSessionModule } from '../logged-session/logged-session.module';
 
 
 
@@ -14,7 +15,8 @@ import { StarRatingModule } from '../star-rating/star-rating.module';
     IonicModule,
     RouterModule.forChild([{ path: '', component: LogsPageComponent }]),
     FormsModule,
-    StarRatingModule
+    StarRatingModule,
+    LoggedSessionModule
   ],
   declarations: [LogsPageComponent],
   exports: [
