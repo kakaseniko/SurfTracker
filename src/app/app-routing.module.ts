@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./logs-page/logs-page.module').then( m => m.LogsPageModule)
   },
   {
+    path: 'add-session',
+    loadChildren: () => import('./add-session/add-session.module').then( m => m.AddSessionModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

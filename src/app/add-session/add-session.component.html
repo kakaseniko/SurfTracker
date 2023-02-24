@@ -1,0 +1,48 @@
+<ion-header class="bg-[var(--ion-color-primary)] flex justify-center flex-col items-center">
+  <ion-toolbar color="primary">
+    <ion-title>Add session</ion-title>
+  </ion-toolbar>
+  <ion-icon name="analytics-outline" class="w-20 h-20 m-5"></ion-icon>
+</ion-header>
+
+<ion-content color="primary">
+  <ion-list class="bg-[var(--ion-color-primary)] lg:mx-10">
+    <ion-item color="primary">
+      <ion-icon name="earth-outline"></ion-icon>
+      <ion-select interface="popover" placeholder="Country">
+        <ion-select-option value="apples">Apples</ion-select-option>
+        <ion-select-option value="oranges">Oranges</ion-select-option>
+        <ion-select-option value="bananas">Bananas</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="bg-[var(--ion-color-primary)] lg:mx-10">
+    <ion-item color="primary">
+      <ion-icon name="location-outline"></ion-icon>
+      <ion-select interface="popover" placeholder="Spot">
+        <ion-select-option value="apples">Apples</ion-select-option>
+        <ion-select-option value="oranges">Oranges</ion-select-option>
+        <ion-select-option value="bananas">Bananas</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div class="flex flex-row ml-5 mt-10 lg:ml-14">
+    <ion-icon name="calendar-outline" size="large"></ion-icon>
+    <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true" class="text-black">
+      <ng-template>
+        <ion-datetime id="datetime"  picker-format="YYYY-MM-DDTHH:mm" display-format="MMM DD, YYYY HH:mm"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </div>
+
+  <div class="mt-10 flex justify-center">
+    <app-star-rating [currentRating]="0" (ratingUpdated)="onRatingUpdated($event)" [clickable]="true"></app-star-rating>
+  </div>
+
+  <ion-button class="mt-12 mx-5 " type="submit" expand="block" color="light" (click)="onSubmit()">
+    Add session
+  </ion-button>
+</ion-content>

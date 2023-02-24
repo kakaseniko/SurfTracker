@@ -11,7 +11,7 @@
       <ion-button color="secondary" class="mb-5"><ion-icon name="close-outline"></ion-icon></ion-button>
     </ion-menu-toggle>
 
-    <ion-list class="bg-[var(--ion-color-primary)]">
+    <ion-list class="bg-[var(--ion-color-primary)] mb-2">
       <ion-item color="primary">
         <ion-icon name="earth-outline"></ion-icon>
         <ion-select interface="popover" placeholder="Country">
@@ -35,11 +35,11 @@
 
     <div class="flex flex-row ml-5 mt-5">
       <ion-icon name="calendar-outline" size="large"></ion-icon>
-      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+      <ion-datetime-button datetime="datetimefilter"></ion-datetime-button>
 
       <ion-modal [keepContentsMounted]="true" class="text-black">
         <ng-template>
-          <ion-datetime id="datetime" presentation="month-year"></ion-datetime>
+          <ion-datetime id="datetimefilter" presentation="month-year"></ion-datetime>
         </ng-template>
       </ion-modal>
     </div>
@@ -70,7 +70,9 @@
     <ion-menu-toggle>
       <ion-button color="secondary"><ion-icon name="options-outline"></ion-icon></ion-button>
     </ion-menu-toggle>
-    <ion-button *ngIf="!isMobile$" class="float-right"><ion-icon name="add-outline" size="large"></ion-icon>Add session</ion-button>
+
+    <ion-button *ngIf="!isMobile$" class="float-right" id="click-trigger" (click)="openModal()"><ion-icon name="add-outline" size="large"></ion-icon>Add session</ion-button>
+
 
     <app-logged-session [session]="this.session"></app-logged-session>
     <app-logged-session [session]="this.session"></app-logged-session>
