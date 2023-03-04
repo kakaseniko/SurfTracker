@@ -9,7 +9,7 @@ from rest_framework import status
 
 # Create your views here.
 class ForecastDataApiView(APIView):
-        def get(self, request, *args, **kwargs):
+        def get(self):
             forecasts = ForecastData.objects.all()
             serializer = ForecastDataSerializer(forecasts, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
