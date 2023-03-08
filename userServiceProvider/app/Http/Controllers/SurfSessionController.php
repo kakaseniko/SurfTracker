@@ -13,7 +13,7 @@ class SurfSessionController extends Controller
     public function index() : JsonResponse{
         $user = auth()->user();
 
-        $surfSessions = SurfSession::where('user_id', $user->id)->get();
+        $surfSessions = SurfSession::where('user_id', 1 /*$user->id*/)->get();
 
         return response()->json([
             'data' => $surfSessions,
@@ -26,7 +26,7 @@ class SurfSessionController extends Controller
 
         //try{
             SurfSession::create([
-                'user_id' => auth()->user()->id,
+                'user_id' => 1,//auth()->user()->id,
                 'dateTime' => $request->dateTime,
                 'country' => $request->country,
                 'spot' => $request->spot,

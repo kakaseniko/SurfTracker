@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SurfSessionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/surfSessions/{id}', [SurfSessionController::class, 'show']);
+Route::post('/register', [UserController::class, 'store']);
+
+Route::get('/surfSessions/{surfSession}', [SurfSessionController::class, 'show']);
 Route::get('/surfSessions', [SurfSessionController::class, 'index']);
 Route::post('/surfSessions', [SurfSessionController::class, 'store']);
 Route::patch('/surfSessions/{surfSession}', [SurfSessionController::class, 'update']);
