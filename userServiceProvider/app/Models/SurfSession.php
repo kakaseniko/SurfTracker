@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
-class surfSession extends Model
+class SurfSession extends Model
 {
     use HasFactory;
 
-    protected $filllable = [
+    protected $fillable = [
         'user_id',
         'dateTime',
         'country',

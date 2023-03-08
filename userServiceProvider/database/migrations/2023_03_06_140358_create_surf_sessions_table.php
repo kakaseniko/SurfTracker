@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('surf_session', function (Blueprint $table) {
+        Schema::create('surf_sessions', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->timestamps();
             $table->foreignId('user_id')->constrained();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('surf_session');
+        Schema::dropIfExists('surf_sessions');
     }
 };
