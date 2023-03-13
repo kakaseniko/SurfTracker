@@ -1,7 +1,7 @@
 import asyncio
 import multiprocessing
 from django.core.management.base import BaseCommand
-from forecastCollectorApi.models import ForecastData
+from forecastCollectorAdmin.models import ForecastData
 import time
 
 
@@ -16,7 +16,7 @@ class Command(BaseCommand):
         asyncio.set_event_loop(loop)
         while True:
             print('Hello from asyncio!')
-            ForecastData.objects.create(country="NL", spot_id=2, dateTime="2019-01-01", waveHeight=1.0, wavePeriod=1.0, waveDirection=1.0, windDirection=1.0, windSpeed=1.0, tide=1.0)
+            ForecastData.objects.create(spot_id=1, dateTime="2019-01-01", waveHeight=1.0, wavePeriod=1.0, waveDirection=1.0, windDirection=1.0, windSpeed=1.0, tide=1.0)
             asyncio.run_coroutine_threadsafe(asyncio.sleep(5), loop)
             time.sleep(30)
 
