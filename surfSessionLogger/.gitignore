@@ -1,0 +1,35 @@
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore the virtual environment
+venv/
+env/
+ENV/
+
+# Ignore local settings
+*.env
+*.pyc
+*.sqlite3
+*.db
+
+# Ignore log files
+*.log
+
+# Ignore media and static files
+media/
+static/
+
+# Ignore configuration files
+*.ini
+*.cfg
+
+# Ignore IDE-specific files
+.idea/
+.vscode/
+*.sublime*
+
+# Ignore the secret key file
+*.secret_key
+
+
