@@ -11,3 +11,5 @@ class ForecastDataApiView(APIView):
             forecasts = ForecastData.objects.all()
             serializer = ForecastDataSerializer(forecasts, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
+        #get where spot = spot and dateTime = dateTime
+        
