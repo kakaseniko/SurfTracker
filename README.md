@@ -23,4 +23,4 @@ This readme provides an overview of the whole project, while additional readme f
 ## Architecture
 The following diagram gives an overview of the system that can help with understanding how the services connect with each other:
 
-![C2 drawio_v1 1 drawio](https://user-images.githubusercontent.com/84147181/225005374-67951d70-2107-427f-b0ed-08cc294e9e86.png)
+![C2 drawio_v1 1 drawio (1)](https://user-images.githubusercontent.com/84147181/225013877-0e44397c-00e7-4f65-911b-b637200b1993.png)
