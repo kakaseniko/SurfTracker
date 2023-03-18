@@ -21,6 +21,8 @@ class SurfSessionApiView(APIView):
         serializer = SurfSessionSerializer(surf_sessions, many=True)
         return Response(serializer.data, status = status.HTTP_200_OK)
     
+    #get filtered
+    
     def post(self, request, *args):
         stream = io.BytesIO(request.body)
         data = JSONParser().parse(stream)
