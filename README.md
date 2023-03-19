@@ -1,4 +1,7 @@
-# Surf Tracker 
+<p align="center">
+<img height="200px" width="200px" src="https://user-images.githubusercontent.com/84147181/226166231-71ad0149-8e1f-4e32-8d15-ba83212b5663.png">
+</p>
+
 ## Introduction
 The surf tracker application is a micro-services software system that provides users with interpreted surf forecasts and allows registered users to log their surf sessions.
 The backbone of the system is a machine learning model that takes care of the forecast interpretation. The model is being trained on the logged surf sessions,
