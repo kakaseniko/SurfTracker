@@ -3,8 +3,7 @@ Django==4.1.7
 django-rest-framework==0.1.0
 djangorestframework==3.14.0
 pandas==1.4.2
-SQLAlchemy @ file:///tmp/build/80754af9/sqlalchemy_1647581680159/work
-sqlparse==0.4.3
+
 
 
 
