@@ -14,9 +14,9 @@ import jwt
 
 # Create your views here.
 class UserApiView(APIView):
-    def get(self, pk, *args):
+    def get(self, *args, **kwargs):
         try:
-            user = CustomUser.objects.get(id=pk)
+            user = CustomUser.objects.get(id=kwargs['pk'])
             serializer= userSerializer(user)
             return Response(data = serializer, status = status.HTTP_200_OK)
         except CustomUser.DoesNotExist:
@@ -28,8 +28,12 @@ class UserApiView(APIView):
         serializer = userSerializer(data = data)
         if serializer.is_valid():
             serializer.save()
-            #send data to kong
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
+            url = os.environ.get('KONG_URL' + 'consumers/')
+            data = {'username': serializer.data['email']}
+            response = requests.post(url, data=data)
+            if response.status_code == 201:
+                return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response(status = status.HTTP_500_INTERNAL_SERVER_ERROR)
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     
     def issue_token(self, request, *args):
