@@ -10,9 +10,7 @@ import os
 import requests
 import jwt
 from rest_framework.decorators import action
-
-
-
+from .kongservice import KongService
 
 # Create your views here.
 class UserApiView(APIView):
@@ -25,23 +23,15 @@ class UserApiView(APIView):
             return Response(status = status.HTTP_404_NOT_FOUND)
         
     def post(self, request, *args):
+        kong_service = KongService()
         stream = io.BytesIO(request.body)
         data = JSONParser().parse(stream)
         serializer = userSerializer(data = data)
         if serializer.is_valid():
-            #url = os.environ.get('KONG_URL' + 'consumers/')
-            url = 'http://kong-gateway:8001/consumers/'
-            data = {'username': 'test3'}#serializer.data['email']}
-            response = requests.post(url, json=data)
-            if response.status_code == 201:
-                url = 'http://kong-gateway:8001/consumers/test3/basic-auth'
-                data = {'username' : 'test3', 'password' : 'test3'}	
-                response= requests.post(url, json=data)
-                if response.status_code == 201:
-                    serializer.save()
-                    return Response(serializer.data, status = status.HTTP_201_CREATED)
-                return Response(status = status.HTTP_500_INTERNAL_SERVER_ERROR)
-            return Response(status = status.HTTP_500_INTERNAL_SERVER_ERROR)
+            kong_service.create_consumer(serializer.validated_data['email'])
+            kong_service.create_basic_auth(serializer.validated_data['email'], serializer.validated_data['password'])
+            serializer.save()
+            return Response(status = status.HTTP_201_CREATED)
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     
     def issue_token(self, request, *args):
