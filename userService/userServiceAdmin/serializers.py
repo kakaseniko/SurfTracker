@@ -4,6 +4,6 @@ from .models import CustomUser
 class userSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ["id", "password", "skill_level", "email", "admin", "staff", "is_superuser"]
+        fields = ["id", "skill_level", "email"]
     def create(self, validated_data):
         return CustomUser.objects.create(**validated_data)

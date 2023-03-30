@@ -18,7 +18,7 @@ class UserApiView(APIView):
         try:
             user = CustomUser.objects.get(id=kwargs['pk'])
             serializer= userSerializer(user)
-            return Response(data = serializer, status = status.HTTP_200_OK)
+            return Response(data = serializer.data, status = status.HTTP_200_OK)
         except CustomUser.DoesNotExist:
             return Response(status = status.HTTP_404_NOT_FOUND)
 
