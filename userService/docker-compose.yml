@@ -9,6 +9,8 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    networks:
+      - individual_kong-net
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:3003
@@ -20,5 +22,10 @@ services:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    networks:
+      - individual_kong-net
     depends_on:
       - db
+networks:
+  individual_kong-net:
+    external: true

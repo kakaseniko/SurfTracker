@@ -24,19 +24,23 @@ class UserApiView(APIView):
         except CustomUser.DoesNotExist:
             return Response(status = status.HTTP_404_NOT_FOUND)
         
-    #@action(detail=False, methods=['post'], url_path='register', url_name='register')
     def post(self, request, *args):
         stream = io.BytesIO(request.body)
         data = JSONParser().parse(stream)
         serializer = userSerializer(data = data)
         if serializer.is_valid():
             #url = os.environ.get('KONG_URL' + 'consumers/')
-            url = 'http://localhost:8001/consumers/'
-            data = {'username': 'test'}#serializer.data['email']}
+            url = 'http://kong-gateway:8001/consumers/'
+            data = {'username': 'test3'}#serializer.data['email']}
             response = requests.post(url, json=data)
             if response.status_code == 201:
-                serializer.save()
-                return Response(serializer.data, status = status.HTTP_201_CREATED)
+                url = 'http://kong-gateway:8001/consumers/test3/basic-auth'
+                data = {'username' : 'test3', 'password' : 'test3'}	
+                response= requests.post(url, json=data)
+                if response.status_code == 201:
+                    serializer.save()
+                    return Response(serializer.data, status = status.HTTP_201_CREATED)
+                return Response(status = status.HTTP_500_INTERNAL_SERVER_ERROR)
             return Response(status = status.HTTP_500_INTERNAL_SERVER_ERROR)
         return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     
