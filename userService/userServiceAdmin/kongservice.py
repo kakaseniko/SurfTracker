@@ -20,3 +20,10 @@ class KongService():
         if response.status_code == 201:
             return response.json()
         raise Exception('Error creating basic auth in gateway')
+    
+    def create_jwt(self, username):
+        url = self.url + username + '/jwt'
+        response = requests.post(url)
+        if response.status_code == 201:
+            return response.json()
+        raise Exception('Error creating token in gateway')
