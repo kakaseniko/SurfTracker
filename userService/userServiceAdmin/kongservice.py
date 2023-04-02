@@ -4,7 +4,7 @@ import requests
 class KongService():
     def __init__(self):
         #url = os.environ.get('KONG_URL')
-        self.url = 'http://kong-gateway:8001/consumers/'
+        self.url = 'http://surftracker-kong-gateway-1:8001/consumers/'
     
     def create_consumer(self, username):
         data = {'username': username}

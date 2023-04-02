@@ -20,9 +20,7 @@ class UserApiView(APIView):
             user = CustomUser.objects.get(id=kwargs['pk'])
             serializer= userSerializer(user)
             return JsonResponse(serializer.data, status = status.HTTP_200_OK, headers = {'Accept': 'application/json'})
-            #return HttpResponse(serializer.data, headers = {'Content-Type': 'application/json'})
         except CustomUser.DoesNotExist:
-            #return JsonResponse(status = status.HTTP_404_NOT_FOUND)
             return HttpResponse(status = status.HTTP_404_NOT_FOUND)
         
     def post(self, request, *args):
