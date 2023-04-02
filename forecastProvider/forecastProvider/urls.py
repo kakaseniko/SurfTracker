@@ -20,6 +20,6 @@ from forecastProviderAdmin import urls as forecastProviderAdminUrls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include(forecastProviderAdminUrls))
+    path("", include(forecastProviderAdminUrls))
 
 ]
