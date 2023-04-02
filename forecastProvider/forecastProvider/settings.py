@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import threading
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,18 +78,18 @@ WSGI_APPLICATION = "forecastProvider.wsgi.application"
 import os 
 
 DATABASES = {
-    #"default": {
-    #    "ENGINE": "django.db.backends.sqlite3",
-    #    "NAME": BASE_DIR / "db.sqlite3",
-    #}
     "default": {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': 'db',
-        'PORT': 5432,
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
+    #"default": {
+    #    'ENGINE': 'django.db.backends.postgresql',
+    #    'NAME': os.environ.get('POSTGRES_NAME'),
+    #    'USER': os.environ.get('POSTGRES_USER'),
+    #    'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+    #    'HOST': 'db',
+    #    'PORT': 5432,
+    #}
 }
 
 
@@ -125,3 +127,12 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+def start_message_receiver():
+    from . import message_receiver
+    # replace 'queue_name' with the name of the queue you want to listen to
+    message_receiver.start()
+
+# Start the message receiver in a separate thread when the Django app starts up
+thread = threading.Thread(target=start_message_receiver)
+thread.start()
