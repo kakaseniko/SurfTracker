@@ -12,15 +12,18 @@ import jwt
 from rest_framework.decorators import action
 from .kongservice import KongService
 from django.http import JsonResponse
+from django.http import HttpResponse
 # Create your views here.
 class UserApiView(APIView):
     def get(self, *args, **kwargs):
         try:
             user = CustomUser.objects.get(id=kwargs['pk'])
             serializer= userSerializer(user)
-            return JsonResponse(serializer.data, status = status.HTTP_200_OK)
+            return JsonResponse(serializer.data, status = status.HTTP_200_OK, headers = {'Accept': 'application/json'})
+            #return HttpResponse(serializer.data, headers = {'Content-Type': 'application/json'})
         except CustomUser.DoesNotExist:
-            return JsonResponse(status = status.HTTP_404_NOT_FOUND)
+            #return JsonResponse(status = status.HTTP_404_NOT_FOUND)
+            return HttpResponse(status = status.HTTP_404_NOT_FOUND)
         
     def post(self, request, *args):
         kong_service = KongService()

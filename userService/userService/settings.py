@@ -128,3 +128,5 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 KONG_URL = "http://localhost:8001/"
+
+ALLOWED_HOSTS = ["*"]
