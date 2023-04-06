@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     IonicModule.forRoot(), 
     AppRoutingModule,
     NavigationModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

@@ -6,6 +6,8 @@ from django.http import JsonResponse
 from rest_framework import status
 from .models import CustomUser
 from .kongservice import KongService
+from rest_framework.views import APIView
+
 
 
 class UserAuth(APIView):
@@ -25,3 +27,5 @@ class UserAuth(APIView):
             token = jwt.encode({"iss": key}, secret, algorithm="HS256")
             return JsonResponse(data = {'token': token, 'id' : user.id}, status = status.HTTP_200_OK)
         return JsonResponse(status = status.HTTP_404_NOT_FOUND)
+    def get(self, *args, **kwargs):
+        return JsonResponse(data='hello', status = status.HTTP_200_OK)

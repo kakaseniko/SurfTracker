@@ -1,6 +1,5 @@
 from django.urls import path
 from .views import UserApiView
-from rest_framework import routers
 from .auth import UserAuth
 
 

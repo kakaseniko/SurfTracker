@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from .models import SurfSession
 from rest_framework import status
-from rest_framework.response import Response
+from rest_framework.response import JsonResponse
 import io
 from rest_framework.parsers import JSONParser
 from django.http import Http404
@@ -19,7 +19,7 @@ class SurfSessionApiView(APIView):
     def get(self, *args):
         surf_sessions = SurfSession.objects.filter(user_id = 1)                      #change to auth user
         serializer = SurfSessionSerializer(surf_sessions, many=True)
-        return Response(serializer.data, status = status.HTTP_200_OK)
+        return JsonResponse(serializer.data, status = status.HTTP_200_OK)
     
     #get filtered
     
@@ -29,8 +29,8 @@ class SurfSessionApiView(APIView):
         serializer = SurfSessionSerializer(data=data)
         if serializer.is_valid():
             serializer.save(user_id = 1)                                             #change to auth user (request.user)
-            return Response(serializer.data, status = status.HTTP_201_CREATED)
-        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+            return JsonResponse(serializer.data, status = status.HTTP_201_CREATED)
+        return JsonResponse(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     
     def patch(self, request, pk, *args):      
         stream = io.BytesIO(request.body)
@@ -39,12 +39,12 @@ class SurfSessionApiView(APIView):
         serializer = SurfSessionSerializer(surf_session, data=data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status = status.HTTP_200_OK)
-        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+            return JsonResponse(serializer.data, status = status.HTTP_200_OK)
+        return JsonResponse(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, pk, *args):
         surf_session = self.get_object(pk)
         surf_session.delete()
         response_data = { "success": True}
-        return Response(response_data, status = status.HTTP_200_OK)
+        return JsonResponse(response_data, status = status.HTTP_200_OK)
 

@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPageComponent } from './login-page.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../services/api/auth';
 
 
 
@@ -12,11 +13,14 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     IonicModule,
     RouterModule.forChild([{ path: '', component: LoginPageComponent }]),
-    FormsModule
+    FormsModule,
   ],
   declarations: [LoginPageComponent],
   exports: [
     LoginPageComponent,
   ],
+  providers: [
+    AuthService
+  ]
 })
 export class LoginPageModule {}

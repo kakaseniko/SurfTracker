@@ -64,6 +64,8 @@ services:
       - kong-gateway
     networks:
       - kong-net
+    volumes:
+      - ./userService:/app
 
   forecast-collector:
     build: ./forecastCollector
