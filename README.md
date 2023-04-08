@@ -37,7 +37,7 @@ Then configure the gateway by running:
 ```
 deck sync
 ```
-If you don't have deck installed you can downloaded from here: https://github.com/Kong/deck 
+If you don't have deck installed, you can download it from here: https://github.com/Kong/deck 
 
 Also make sure that all migrations are applied properly in the services. In case there is a problem, you can always run ``python manage.py migrate`` from the container's CLI.
 
