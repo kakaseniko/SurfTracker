@@ -18,7 +18,8 @@ export class LoginPageComponent implements OnInit {
   onSubmit() {
 
     this.authService.login(this.email + ':' + this.password).subscribe(response => {
-      alert(response)
+      console.log(response)
+      alert(response.token)
     });
  }
 }

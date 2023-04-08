@@ -21,10 +21,11 @@ export class AuthService {
     login(credential:string) {
         const options = {
             headers: new HttpHeaders({
-            'Authorization': 'Basic ' + btoa(credential)
+            'Authorization': 'Basic ' + btoa(credential),
+            'Access-Control-Allow-Origin': '*'
         })
         }
         const data = {}
-        return this.http.post<any>(this.base_url + 'login/', data, options);
+        return this.http.get<any>(this.base_url + 'login/', options);
     }
 }
