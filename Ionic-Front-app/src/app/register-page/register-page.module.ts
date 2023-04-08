@@ -4,7 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RegisterPageComponent } from './register-page.component';
-
+import { AuthService } from '../services/api/auth';
+import { ToastController } from '@ionic/angular';
 
 
 @NgModule({
@@ -18,5 +19,9 @@ import { RegisterPageComponent } from './register-page.component';
   exports: [
     RegisterPageComponent,
   ],
+  providers: [
+    AuthService,
+    ToastController,
+  ]
 })
 export class RegisterPageModule {}

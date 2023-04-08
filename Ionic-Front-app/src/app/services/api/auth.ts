@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs';
+import { throwError } from 'rxjs';
+
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +15,7 @@ export class AuthService {
 
     register(email:string, password:string, skill_level:string) {
         const body = { 
-            "skill_levek": skill_level, 
+            "skill_level": skill_level, 
             "email": email, 
             "password": password
         };
@@ -25,7 +28,7 @@ export class AuthService {
             'Access-Control-Allow-Origin': '*'
         })
         }
-        const data = {}
         return this.http.get<any>(this.base_url + 'login/', options);
     }
+
 }

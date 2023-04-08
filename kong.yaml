@@ -1,38 +1,9 @@
 _format_version: "1.1"
 consumers:
 - basicauth_credentials:
-  - password: f4a9841495a2272cf266d50ec7c9bd8b602e006c
-    username: Aladdin
-  username: Aladdin
-- basicauth_credentials:
-  - password: 5887239a53790d589a83dbe05b57818916dc6ce7
-    username: aladdin@test.com
-  jwt_secrets:
-  - algorithm: HS256
-    key: XNFHTg83dWxQ4LaOkUMnG9M7PFVMcbUX
-    secret: TJSSF7I430lr0mZE8p7NvdrYPeE30rml
-  - algorithm: HS256
-    key: DAsf6d8YdNoQPlw4hUC9z0BXw4sWsryb
-    secret: jAw5Nlb1U5hgL8Gdz5y9laAzWXCFytoC
-  - algorithm: HS256
-    key: XLG3rgFepFb3ttEPZGYJbTaE9w2myym1
-    secret: Ov6DTtEal6jSw5GlKCvVnHl6inB8hO0w
-  username: aladdin@test.com
-- basicauth_credentials:
-  - password: 142e6ebe1040c836f576f999d00e47bd138eeaaf
-    username: login2@test.com
-  jwt_secrets:
-  - algorithm: HS256
-    key: hd3JvZb2HVbED48Nd5YmGAcQT7TAyHWo
-    secret: Rd7fMDfOsTWFe4u12WZWKOmXLMOazwaw
-  - algorithm: HS256
-    key: PurhXjys0hKavJy1DEiuOABQt2nn7Z0q
-    secret: BvRnCnNNMrFt7cDICNBo2UwZKIGtgeK8
-  username: login2@test.com
-- basicauth_credentials:
-  - password: cc13d21b79dad18c0d057b206e512d1e53e67b43
-    username: login3@test.com
-  username: login3@test.com
+  - password: c5f1824b79792e6afe7fe057e30f47c56a38bf32
+    username: test@test.com
+  username: test@test.com
 services:
 - connect_timeout: 60000
   host: surftracker-user-service-1
@@ -115,6 +86,31 @@ services:
   host: surftracker-user-service-1
   id: c6b8c6cf-9388-49e9-ba48-e3c65dfbd5a0
   path: /user
+  plugins:
+  - config:
+      credentials: false
+      exposed_headers: null
+      headers: null
+      max_age: null
+      methods:
+      - GET
+      - HEAD
+      - PUT
+      - PATCH
+      - POST
+      - DELETE
+      - OPTIONS
+      - TRACE
+      - CONNECT
+      origins: null
+      preflight_continue: false
+    enabled: true
+    name: cors
+    protocols:
+    - grpc
+    - grpcs
+    - http
+    - https
   port: 8005
   protocol: http
   read_timeout: 60000

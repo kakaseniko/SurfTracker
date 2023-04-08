@@ -5,8 +5,7 @@ import { LoginPageComponent } from './login-page.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../services/api/auth';
-
-
+import { ToastController } from '@ionic/angular';
 
 @NgModule({
   imports: [
@@ -20,7 +19,8 @@ import { AuthService } from '../services/api/auth';
     LoginPageComponent,
   ],
   providers: [
-    AuthService
+    AuthService,
+    ToastController,
   ]
 })
 export class LoginPageModule {}

@@ -17,11 +17,6 @@ class UserAuthView(APIView):
         kong_service = KongService()
         if user:
             data = kong_service.create_jwt(email)
-            #url = os.environ.get('KONG_URL' + 'consumers/' + user.username + '/jwt')
-            #headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-            #response = requests.post(url, headers=headers)
-            #if response.status_code == 201:
-                #data = response.json()
             secret = data['secret']
             key = data['key']
             token = jwt.encode({"iss": key}, secret, algorithm="HS256")

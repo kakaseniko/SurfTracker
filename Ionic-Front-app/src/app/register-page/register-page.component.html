@@ -12,6 +12,16 @@
   </ion-item>
 
   <ion-item color="primary" class="lg:mx-96">
+    <!--<ion-label position="floating">Skill level</ion-label>
+    <ion-input [(ngModel)]="skill_level" type="" required></ion-input>-->
+    <ion-select [(ngModel)]="skill_level" aria-label="skill_level" placeholder="Skill level" required>
+      <ion-select-option value="beginner">Beginner</ion-select-option>
+      <ion-select-option value="inermediate">Intermediate</ion-select-option>
+      <ion-select-option value="advanced">Advanced</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item color="primary" class="lg:mx-96">
     <ion-label position="floating">Password</ion-label>
     <ion-input [(ngModel)]="password" type="password" required></ion-input>
   </ion-item>
