@@ -19,8 +19,8 @@ This readme provides an overview of the whole project, while additional readme f
 |Surf session logger|Django|In progress|
 |User service|Django|In progress|
 |Forecast interpreter|TBD|To do|
-|API Gateway|TBD|To do|
-|Message broker|TBD|To do|
+|API Gateway|Kong|In progress|
+|Message broker|RabbitMQ|In progress|
 
 
 ## Architecture
@@ -29,4 +29,16 @@ The following diagram gives an overview of the system that can help with underst
 ![C2 drawio_v1 1 drawio (1)](https://user-images.githubusercontent.com/84147181/225013877-0e44397c-00e7-4f65-911b-b637200b1993.png)
 
 ## Running the whole application
-Coming soon...
+First build and run the docker images with:
+```
+docker compose up -d
+```
+Then configure the gateway by running:
+```
+deck sync
+```
+If you don't have deck installed you can downloaded from here: https://github.com/Kong/deck 
+
+Also make sure that all migrations are applied properly in the services. In case there is a problem, you can always run ``python manage.py migrate`` from the container's CLI.
+
+
