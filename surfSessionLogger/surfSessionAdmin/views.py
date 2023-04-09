@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from .models import SurfSession
 from rest_framework import status
-from rest_framework.response import JsonResponse
+from django.http import JsonResponse
 import io
 from rest_framework.parsers import JSONParser
 from django.http import Http404
