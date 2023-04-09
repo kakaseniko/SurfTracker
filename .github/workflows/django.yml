@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.8, 3.9]
-        folder: ['./userService', './forecastProvider', './forecastCollector', './surfSessionLogger']
+        folder: ['userService', 'forecastProvider', 'forecastCollector']
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -27,10 +27,15 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Debug
+        run: |
+          ls -l
+          pwd
+        working-directory: ${{ matrix.folder }}
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r ${{ matrix.folder }}/requirements.txt
+          pip install -r requirements.txt
         working-directory: ${{ matrix.folder }}
       - name: Run Tests
         run: |
