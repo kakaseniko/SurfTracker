@@ -5,10 +5,20 @@ on:
     branches:
       - main
       - dev
+    paths:
+      - 'userService/**'
+      - 'forecastProvider/**'
+      - 'forecastCollector/**'
+      - 'surfSessionLogger/**'
   pull_request:
     branches:
       - main
       - dev
+    paths:
+      - 'userService/**'
+      - 'forecastProvider/**'
+      - 'forecastCollector/**'
+      - 'surfSessionLogger/**'
 
 jobs:
   build:
@@ -19,12 +29,12 @@ jobs:
         folder: ['userService', 'forecastProvider', 'forecastCollector', 'surfSessionLogger']
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
-          ref: main
+          ref: ${{ github.ref }}
           fetch-depth: 0
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
       - name: Debug
