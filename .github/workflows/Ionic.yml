@@ -37,6 +37,3 @@ jobs:
         working-directory: ./Ionic-Front-app
         run: ionic build
 
-      - name: Run Ionic app
-        working-directory: ./Ionic-Front-app
-        run: ionic serve --no-open --port ${{ github.event.number }} --no-browser
