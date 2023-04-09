@@ -1,9 +1,6 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
-
-# Create your models here.
 class ForecastData(models.Model):
     spot = models.ForeignKey('Spot', on_delete=models.SET('Spot'), related_name='spot')
     dateTime = models.DateTimeField()
