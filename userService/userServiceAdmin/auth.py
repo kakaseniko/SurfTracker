@@ -6,7 +6,6 @@ from django.http import JsonResponse
 from rest_framework import status
 from .models import CustomUser
 from .kongservice import KongService
-from rest_framework.views import APIView
 
 
 
