@@ -1,0 +1,42 @@
+name: Ionic CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'Ionic-Front-app/**'
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'Ionic-Front-app/**'
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js and NPM
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Install Ionic CLI
+        run: npm install -g @ionic/cli
+
+      - name: Install dependencies
+        working-directory: ./Ionic-Front-app
+        run: npm install
+
+      - name: Build Ionic app
+        working-directory: ./Ionic-Front-app
+        run: ionic build
+
+      - name: Run Ionic app
+        working-directory: ./Ionic-Front-app
+        run: ionic serve --no-open --port ${{ github.event.number }} --no-browser
