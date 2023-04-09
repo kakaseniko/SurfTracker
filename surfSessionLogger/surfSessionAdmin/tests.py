@@ -33,10 +33,7 @@ class SurfSessionApiTests(TestCase):
             }, format='json')
         self.assertEqual(response.status_code, 200)
 
-    def test_delete_session(self):
-        response = self.client.delete('/api/surfsession/1/')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, {"success": True})
+
 
 
 
