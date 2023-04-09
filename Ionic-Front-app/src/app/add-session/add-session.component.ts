@@ -6,9 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-session.component.scss'],
 })
 export class AddSessionComponent implements OnInit {
-
   constructor() { }
-
   ngOnInit() {}
 
   onRatingUpdated(rating: number) {
