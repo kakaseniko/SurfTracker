@@ -128,3 +128,12 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+def start_collector():
+    from . import collector
+    # replace 'queue_name' with the name of the queue you want to listen to
+    collector.start()
+
+# Start the message receiver in a separate thread when the Django app starts up
+thread = threading.Thread(target=start_collector)
+thread.start()

@@ -1,7 +1,7 @@
 import pika, sys, os
 
 def start():
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='surftracker-rabbitmq-1'))
     channel = connection.channel()
 
     channel.queue_declare(queue='hello')
