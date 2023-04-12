@@ -3,6 +3,7 @@ import { SurfSessionService } from '../services/api/surfsession';
 import { Session } from '../models/session';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 
 @Component({
@@ -11,7 +12,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-session.component.scss'],
 })
 export class AddSessionComponent implements OnInit {
-  constructor(private surfSessionService: SurfSessionService, private toastController: ToastController, private router: Router) { }
+  constructor(
+    private surfSessionService: SurfSessionService, 
+    private toastController: ToastController, 
+    private router: Router,
+    private platform: Platform) { }
   country: string;
   spot: string;
   date: string = new Date().toISOString();
@@ -50,11 +55,15 @@ export class AddSessionComponent implements OnInit {
     if(token){
       this.surfSessionService.post(token, session).subscribe({
         next: (v) => {
-          this.router.navigate(['/logs']);
+          if(this.platform.is('mobile')){
+            this.router.navigate(['/logs']);
+          } else {
+            window.location.href = '/logs';
+          }        
         },
         error: (e) => {
           this.toastController.create({
-            message: 'Something went wrong',
+            message: 'Something went wrong.',
             duration: 2000,
             color: 'danger'
           }).then(toast => toast.present());

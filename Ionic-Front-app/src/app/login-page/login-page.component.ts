@@ -38,7 +38,7 @@ export class LoginPageComponent implements OnInit {
       next: (v) => {
         console.log(v);
         localStorage.setItem('token', v.token);
-        this.router.navigate(['/logs']);
+        window.location.href = '/logs';
       },
       error: (e) => {
         this.toastController.create({
