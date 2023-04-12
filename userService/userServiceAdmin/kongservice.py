@@ -27,3 +27,11 @@ class KongService():
         if response.status_code == 201:
             return response.json()
         raise Exception('Error creating token in gateway')
+    
+    def add_custom_id(self, username, custom_id):
+        url = self.url + username
+        data = {'custom_id' : str(custom_id)}
+        response = requests.patch(url, json=data)
+        if response.status_code == 200:
+            return response.json()
+        raise Exception('Error adding custom id in gateway')

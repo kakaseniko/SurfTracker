@@ -59,16 +59,12 @@ services:
       - kong-net
     volumes:
       - ./kong-gateway:/kong.yaml
-      - "/etc/timezone:/etc/timezone:ro"
-      - "/etc/localtime:/etc/localtime:ro"
 
   user-service:
     build: ./userService
     command: python manage.py runserver 0.0.0.0:8005
     volumes:
       - ./user-service:/app
-      - "/etc/timezone:/etc/timezone:ro"
-      - "/etc/localtime:/etc/localtime:ro"
     ports:
       - "8005:8005"
     depends_on:
@@ -80,6 +76,8 @@ services:
   forecast-collector:
     build: ./forecastCollector
     command: python manage.py runserver 0.0.0.0:8006
+    volumes:
+      - ./forecast-collector:/app
     ports:
       - "8006:8006"
     depends_on:
@@ -90,6 +88,8 @@ services:
   forecast-provider:
     build: ./forecastProvider
     command: python manage.py runserver 0.0.0.0:8007
+    volumes:
+      - ./forecast-provider:/app
     ports:
       - "8007:8007"
     depends_on:
@@ -100,6 +100,8 @@ services:
   surfsession-logger:
     build: ./surfSessionLogger
     command: python manage.py runserver 0.0.0.0:8008
+    volumes:
+      - ./surfsession-logger:/app
     ports:
       - "8008:8008"
     depends_on:

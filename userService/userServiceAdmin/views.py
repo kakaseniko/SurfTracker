@@ -26,7 +26,8 @@ class UserApiView(APIView):
         if serializer.is_valid():
             kong_service.create_consumer(serializer.validated_data['email'])
             kong_service.create_basic_auth(serializer.validated_data['email'], serializer.validated_data['password'])
-            serializer.save()
+            user = serializer.save()
+            kong_service.add_custom_id(serializer.validated_data['email'], user.id)
             return HttpResponse(status = status.HTTP_201_CREATED)
         return JsonResponse(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     
