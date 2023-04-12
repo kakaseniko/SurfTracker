@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { LogsPageComponent } from './logs-page.component';
 import { StarRatingModule } from '../star-rating/star-rating.module';
 import { LoggedSessionModule } from '../logged-session/logged-session.module';
+import { SurfSessionService } from '../services/api/surfsession';
 
 
 
@@ -22,5 +23,8 @@ import { LoggedSessionModule } from '../logged-session/logged-session.module';
   exports: [
     LogsPageComponent,
   ],
+  providers: [
+    SurfSessionService,
+  ]
 })
 export class LogsPageModule {}

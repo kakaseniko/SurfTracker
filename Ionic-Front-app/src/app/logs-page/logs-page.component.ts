@@ -3,6 +3,8 @@ import { Session } from '../models/session';
 import { Platform } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { AddSessionComponent } from '../add-session/add-session.component';
+import { SurfSessionService } from '../services/api/surfsession';
+import {Router} from '@angular/router';
 
 
 
@@ -12,12 +14,39 @@ import { AddSessionComponent } from '../add-session/add-session.component';
   styleUrls: ['./logs-page.component.scss'],
 })
 export class LogsPageComponent implements OnInit {
-  session = new Session(1, 1, 'Scheveningen', 'NL', '20-05-2022', '15:00', 1, 'details');
+  sessions: Session[] = [];
   isMobile$ = this.platform.is('mobile');
   
-  constructor(private platform: Platform, public modalController: ModalController) { }
+  constructor(
+    private platform: Platform, 
+    public modalController: ModalController, 
+    private surfSessionService: SurfSessionService,
+    private router:Router
+    ) { 
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const token = localStorage.getItem('token');
+    if(token){
+      this.surfSessionService.get(token).subscribe({
+        next: (v) => {
+          for(let element of v){
+            var date_time = element.date_time.split('T');
+            var date = date_time[0];
+            var time = date_time[1].split('Z')[0];
+            this.sessions.push(new Session(element.id, element.spot, element.country, date, time, element.rating));
+          }
+          console.log(this.sessions)
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      }); 
+      return;
+    }
+    this.router.navigate(['/login']);
+  
+  }
 
   onRatingUpdated(rating: number) {
     console.log(`New rating: ${rating}`);

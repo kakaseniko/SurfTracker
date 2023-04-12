@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { StarRatingModule } from '../star-rating/star-rating.module';
 import { LoggedSessionModule } from '../logged-session/logged-session.module';
 import { AddSessionComponent } from './add-session.component';
+import { SurfSessionService } from '../services/api/surfsession';
+import { ToastController } from '@ionic/angular';
 
 
 
@@ -23,5 +25,9 @@ import { AddSessionComponent } from './add-session.component';
   exports: [
     AddSessionComponent,
   ],
+  providers: [
+    SurfSessionService,
+    ToastController,
+  ]
 })
 export class AddSessionModule {}

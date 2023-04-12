@@ -6,34 +6,30 @@
 </ion-header>
 
 <ion-content color="primary">
-  <ion-list class="bg-[var(--ion-color-primary)] lg:mx-10">
+  <ion-list class="bg-[var(--ion-color-primary)] lg:mx-10" >
     <ion-item color="primary">
       <ion-icon name="earth-outline"></ion-icon>
-      <ion-select interface="popover" placeholder="Country">
-        <ion-select-option value="apples">Apples</ion-select-option>
-        <ion-select-option value="oranges">Oranges</ion-select-option>
-        <ion-select-option value="bananas">Bananas</ion-select-option>
+      <ion-select interface="popover" placeholder="Country" (ionChange) = "onCountryUpdated($event)">
+        <ion-select-option value="NL">Netherlands</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
-  <ion-list class="bg-[var(--ion-color-primary)] lg:mx-10">
+  <ion-list class="bg-[var(--ion-color-primary)] lg:mx-10" >
     <ion-item color="primary">
       <ion-icon name="location-outline"></ion-icon>
-      <ion-select interface="popover" placeholder="Spot">
-        <ion-select-option value="apples">Apples</ion-select-option>
-        <ion-select-option value="oranges">Oranges</ion-select-option>
-        <ion-select-option value="bananas">Bananas</ion-select-option>
+      <ion-select interface="popover" placeholder="Spot" (ionChange) = "onSpotUpdated($event)">
+        <ion-select-option value="Scheveningen" >Scheveningen</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
   <div class="flex flex-row ml-5 mt-10 lg:ml-14">
     <ion-icon name="calendar-outline" size="large"></ion-icon>
-    <ion-datetime-button datetime="datetime"></ion-datetime-button>
-    <ion-modal [keepContentsMounted]="true" class="text-black">
+    <ion-datetime-button datetime="datetime" ></ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true" class="text-black" (ionChange)="onDateUpdated($event)">
       <ng-template>
-        <ion-datetime id="datetime"  picker-format="YYYY-MM-DDTHH:mm" display-format="MMM DD, YYYY HH:mm"></ion-datetime>
+        <ion-datetime id="datetime"  picker-format="YYYY-MM-DDTHH:mm" display-format="MMM DD, YYYY HH:mm" ></ion-datetime>
       </ng-template>
     </ion-modal>
   </div>

@@ -73,9 +73,15 @@
 
     <ion-button *ngIf="!isMobile$" class="float-right" id="click-trigger" (click)="openModal()"><ion-icon name="add-outline" size="large"></ion-icon>Add session</ion-button>
 
+    <ng-container *ngIf="this.sessions && this.sessions.length; else noSessions">
+      <ng-container *ngFor="let session of this.sessions">
+        <app-logged-session [session]="session"></app-logged-session>
+      </ng-container>
+    </ng-container>
 
-    <app-logged-session [session]="this.session"></app-logged-session>
-    <app-logged-session [session]="this.session"></app-logged-session>
+    <ng-template #noSessions>
+      <p>No logged sessions found.</p>
+    </ng-template>
 
   </ion-content>
 
