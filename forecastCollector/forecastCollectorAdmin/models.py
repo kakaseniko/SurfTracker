@@ -11,6 +11,11 @@ class ForecastData(models.Model):
     windSpeed = models.FloatField()
     tide = models.FloatField()
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['spot', 'dateTime'], name='unique_spot_dateTime')
+        ]
+
     def __str__(self):
         return str(self.spot) + " " + str(self.dateTime) + " " + str(self.waveHeight) + " " + str(self.wavePeriod) + " " + str(self.waveDirection) + " " + str(self.windDirection) + " " + str(self.windSpeed) + " " + str(self.tide)
 class Spot(models.Model):
