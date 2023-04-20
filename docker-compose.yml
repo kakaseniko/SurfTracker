@@ -5,7 +5,7 @@ services:
     image: rabbitmq:3.11-management
     ports:
       - "5673:5673"
-      - "15673:15673"
+      - "15673:15672"
     networks:
       - kong-net
 
@@ -62,7 +62,7 @@ services:
 
   user-service:
     build: ./userService
-    command: python manage.py runserver 0.0.0.0:8005
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8005"
     volumes:
       - ./user-service:/app
     ports:
@@ -75,7 +75,7 @@ services:
 
   forecast-collector:
     build: ./forecastCollector
-    command: python manage.py runserver 0.0.0.0:8006
+    command:  sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8006"
     volumes:
       - ./forecast-collector:/app
     ports:
@@ -87,7 +87,7 @@ services:
 
   forecast-provider:
     build: ./forecastProvider
-    command: python manage.py runserver 0.0.0.0:8007
+    command:  sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8007"
     volumes:
       - ./forecast-provider:/app
     ports:
@@ -99,7 +99,7 @@ services:
 
   surfsession-logger:
     build: ./surfSessionLogger
-    command: python manage.py runserver 0.0.0.0:8008
+    command:  sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8008"
     volumes:
       - ./surfsession-logger:/app
     ports:

@@ -7,9 +7,11 @@ from rest_framework import status
 
 # Create your views here.
 class ForecastDataApiView(APIView):
-        def get(self, arg):
-            forecasts = ForecastData.objects.all()
-            serializer = ForecastDataSerializer(forecasts, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+    def get(self, arg):
+        forecasts = ForecastData.objects.all()
+        serializer = ForecastDataSerializer(forecasts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
         #get where spot = spot and dateTime = dateTime
+
+              
         

@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import threading
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -128,11 +127,3 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-def start_message_receiver():
-    from . import message_receiver
-    # replace 'queue_name' with the name of the queue you want to listen to
-    message_receiver.start()
-
-# Start the message receiver in a separate thread when the Django app starts up
-thread = threading.Thread(target=start_message_receiver)
-thread.start()

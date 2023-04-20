@@ -42,4 +42,5 @@ def get_wave_data():
     df['waveHeight'] = df['waveHeight'].astype(float).apply(lambda x: x / 100.0).round(1)
     df['date'] = df['date'].dt.strftime('%Y-%m-%d %H:%M')
     return df.to_json(orient='records')
+
     
