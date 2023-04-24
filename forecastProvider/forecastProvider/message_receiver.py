@@ -1,5 +1,7 @@
 import pika, sys, os
 from forecastProviderAdmin.models import ForecastData
+import json
+
 
 def start():
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='surftracker-rabbitmq-1'))
@@ -9,9 +11,12 @@ def start():
 
     def callback(ch, method, properties, body):
         ForecastData.objects.all().delete()
-        for data in body: 
+        body1 = json.loads(body.decode('utf-8'))
+        print(body1)
+
+        for data in body1: 
             ForecastData.objects.create(spot_id=1, dateTime=data['date'], waveHeight =  data['waveHeight'], wavePeriod = data['wavePeriod'], waveDirection = 0.0, windDirection = 0.0, windSpeed = 0.0, tide = 0.0)
-        print(" [x] Received" )
+        print(" [x] Received," )
 
     channel.basic_consume(queue='hello', on_message_callback=callback, auto_ack=True)
 
