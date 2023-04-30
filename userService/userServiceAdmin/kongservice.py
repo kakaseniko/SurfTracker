@@ -35,3 +35,10 @@ class KongService():
         if response.status_code == 200:
             return response.json()
         raise Exception('Error adding custom id in gateway')
+    
+    def delete_consumer(self, username):
+        url = self.url + username
+        response = requests.delete(url)
+        if response.status_code == 204:
+            return response
+        raise Exception('Error deleting consumer in gateway')
