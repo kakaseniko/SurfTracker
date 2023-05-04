@@ -6,7 +6,10 @@ This cross-platform application provides the user interface for the Surf Tracker
 ## Prerequisite
 Nodejs </br>
 Npm </br>
-Ionic
+Ionic </br>
+```
+npm i -g @ionic/cli
+```
 
 ## Installation
 ```
