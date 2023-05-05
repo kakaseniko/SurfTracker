@@ -19,7 +19,7 @@ jobs:
       - name: Run Deck Sync
         uses: ./
         with:
-          command: "sync"
+          args: sync
 
       - name: Run Zap Scan
         uses: zaproxy/action-baseline@v0.7.0
