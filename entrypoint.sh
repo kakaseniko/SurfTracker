@@ -1,6 +1,8 @@
 #!/bin/sh -l
 set -e -o pipefail
- 
+
+KONG_ADMIN_URL="http://surftracker-kong-gateway-1:8001"
+
 main (){
     cmd=$1
     dir=$2

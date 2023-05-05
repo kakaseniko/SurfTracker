@@ -142,6 +142,19 @@ services:
     command: ionic serve --external
     ports:
       - "8100:8100"
+  
+  kong-deck:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DECK_KONG_ADDR: http://surftracker-kong-gateway-1:8001
+    command: 
+      #- convert --from kong-gateway-2.x --to kong-gateway-3.x
+      - sync
+    entrypoint: ["/entrypoint.sh"]
+    networks:
+      - kong-net
 
 
 networks:
