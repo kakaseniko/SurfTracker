@@ -83,7 +83,7 @@ services:
     networks:
       - kong-net
     healthcheck:
-      test: ["bash", "-c", "nc -z -v -w5 localhost 5673"]
+      test: ["CMD-SHELL", "-c", "nc -z -v -w5 localhost 5673"]
       interval: 5s
       timeout: 5s
       retries: 5
