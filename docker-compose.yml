@@ -136,6 +136,12 @@ services:
       - kong-gateway
     networks:
       - kong-net
+   
+  ionic-front-app:
+    build: ./Ionic-Front-app
+    command: ionic serve --external
+    ports:
+      - "8100:8100"
 
 
 networks:
