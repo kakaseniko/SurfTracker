@@ -17,9 +17,9 @@ jobs:
         run: docker-compose up -d
 
       - name: Run Deck Sync
-        uses: ./
-        with:
-          args: sync
+        working-directory: /
+        run: deck sync
+        
 
       - name: Run Zap Scan
         uses: zaproxy/action-baseline@v0.7.0
