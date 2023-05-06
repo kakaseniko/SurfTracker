@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+    
+permissions:
+  issues: write
  
 jobs:
   build:
@@ -21,5 +24,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'http://localhost:8100'
-    permissions:
-      issues: write
+
