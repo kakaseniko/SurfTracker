@@ -1,0 +1,30 @@
+name: Cypress CI
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+      
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start Docker Compose
+        run: docker-compose up -d
+        
+      - name: Change working directory
+        working-directory: ./Ionic-Front-app
+      
+      - name: Run cypress
+        uses: cypress-io/github-action@v5
+        with:
+          build: npm run build
+          start: npm start
+
