@@ -4,14 +4,13 @@ on:
   push:
     branches:
       - dev
-      - main
   pull_request:
     branches:
       - main
       - dev
       
 jobs:
-  Test:
+  Cypress:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +20,7 @@ jobs:
       - name: Start Docker Compose
         run: docker-compose up -d
         
-      - name: Change working directory
+      - name: Cypress test
         working-directory: ./Ionic-Front-app
         run: |
          npm install
