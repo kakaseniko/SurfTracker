@@ -23,11 +23,9 @@ jobs:
         
       - name: Change working directory
         working-directory: ./Ionic-Front-app
-        run: npm install
+        run: |
+         npm install
+         npx cypress run
       
-      - name: Run cypress
-        uses: cypress-io/github-action@v5
-        with:
-          build: npm run build
-          start: npm start
+
 
