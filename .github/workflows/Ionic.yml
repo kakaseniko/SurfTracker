@@ -3,14 +3,13 @@ name: Ionic CI
 on:
   push:
     branches:
-      - main
-      - develop
+      - dev
     paths:
       - 'Ionic-Front-app/**'
   pull_request:
     branches:
       - main
-      - develop
+      - dev
     paths:
       - 'Ionic-Front-app/**'
 
