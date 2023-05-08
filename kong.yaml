@@ -1,9 +1,26 @@
-_format_version: "3.0"
-consumers:
-- basicauth_credentials:
-  - password: 13c2d024d3802dcb482dd3053b7417857a551d0e
-    username: test@test.com
-  username: test@test.com
+_format_version: "1.1"
+plugins:
+- config:
+    anonymous: null
+    claims_to_verify: null
+    cookie_names: []
+    header_names:
+    - authorization
+    key_claim_name: iss
+    maximum_expiration: 0
+    run_on_preflight: true
+    secret_is_base64: false
+    uri_param_names:
+    - jwt
+  enabled: true
+  name: jwt
+  protocols:
+  - grpc
+  - grpcs
+  - http
+  - https
+  route: delete-user
+  service: c6b8c6cf-9388-49e9-ba48-e3c65dfbd5a0
 services:
 - connect_timeout: 60000
   host: surftracker-surfsession-logger-1
@@ -184,6 +201,26 @@ services:
   retries: 5
   routes:
   - https_redirect_status_code: 426
+    methods:
+    - DELETE
+    - OPTIONS
+    name: delete-user
+    path_handling: v0
+    paths:
+    - /delete-account
+    preserve_host: false
+    protocols:
+    - http
+    - https
+    regex_priority: 0
+    request_buffering: true
+    response_buffering: true
+    strip_path: true
+  - https_redirect_status_code: 426
+    methods:
+    - POST
+    - OPTIONS
+    - GET
     name: user-route
     path_handling: v0
     paths:

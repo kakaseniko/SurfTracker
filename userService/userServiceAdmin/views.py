@@ -33,13 +33,14 @@ class UserApiView(APIView):
             return HttpResponse(status = status.HTTP_201_CREATED)
         return JsonResponse(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     
-    def delete(self, *args, **kwargs):
+    def delete(self, request, *args, **kwargs):
         try:
-            user = CustomUser.objects.get(id=kwargs['pk'])
+            id = request.headers.get('X-Consumer-Custom-ID')
+            user = CustomUser.objects.get(id = id)
             kong_service = KongService()
             kong_service.delete_consumer(user.email)
             user.delete()
-            send(kwargs['pk'])
+            send(id)
             return HttpResponse(status = status.HTTP_204_NO_CONTENT)
         except CustomUser.DoesNotExist:
             return HttpResponse(status = status.HTTP_404_NOT_FOUND)
