@@ -16,8 +16,8 @@ This readme provides an overview of the whole project, while additional readme f
 |Front-app| Ionic, Angular|In progress|
 |Forecast data collector|Django|In progress|
 |Forecast provider|Django|In progress|
-|Surf session logger|Django|In progress|
-|User service|Django|In progress|
+|Surf session logger|Django|Done|
+|User service|Django|Done|
 |Forecast interpreter|TBD|To do|
 |API Gateway|Kong|In progress|
 |Message broker|RabbitMQ|In progress|

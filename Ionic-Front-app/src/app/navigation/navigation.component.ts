@@ -17,5 +17,9 @@ export class NavigationComponent implements OnInit {
    }
 
   ngOnInit() {}
+  handleLogout(){
+    localStorage.removeItem('token');
+    window.location.href = '/login';
+  }
 
 }

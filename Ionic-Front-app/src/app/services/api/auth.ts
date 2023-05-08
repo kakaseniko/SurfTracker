@@ -30,5 +30,14 @@ export class AuthService {
         }
         return this.http.get<any>(this.base_url + 'login/', options);
     }
+    deleteAccount(token: string) {
+        const options = {
+            headers: new HttpHeaders({
+            'Authorization': 'Bearer ' + token,
+            'Access-Control-Allow-Origin': '*'
+            })
+        }
+        return this.http.delete<any>(this.base_url + 'delete-account/', options);
+    }
 
 }
