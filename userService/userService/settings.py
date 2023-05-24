@@ -82,15 +82,19 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     },
-    #"default": {
-    #    'ENGINE': 'django.db.backends.postgresql',
-    #    'NAME': os.environ.get('POSTGRES_NAME'),
-    #    'USER': os.environ.get('POSTGRES_USER'),
-    #    'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-    #    'HOST': 'db',
-    #    'PORT': 5432,
-    #}
+    "postgres": {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': 5432,
+    }
 }
+
+POSTGRES_NAME = ''
+POSTGRES_USER = ''
+POSTGRES_PASSWORD = ''
 
 
 # Password validation
@@ -127,7 +131,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-KONG_URL = "http://localhost:8001/"
+KONG_URL = 'http://surftracker-kong-gateway-1:8001/consumers/'
+RABBIT_HOST = '188.166.135.152'
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
