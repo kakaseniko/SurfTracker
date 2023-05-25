@@ -12,11 +12,9 @@ spec:
             - name: KONG_DATABASE
               value: postgres
             - name: KONG_PG_HOST
-              value: db-postgresql-ams3-01613-do-user-14134273-0.b.db.ondigitalocean.com
-            - name: KONG_PG_USER
-              value: doadmin
+              value: kong-database
             - name: KONG_PG_PASSWORD
-              value: AVNS_hvslPrJ3fObDICkuk2i
+              value: kongpass
             - name: KONG_PASSWORD
               value: test
           command: ["sh", "-c", "kong migrations bootstrap && tail -f /dev/null"]
