@@ -14,12 +14,14 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: kakaseniko/us
+        image: kakaseniko/us:latest
         ports:
         - containerPort: 8005
         env:
         - name: DEBUG
-          value: "false"  
+          value: "false"
+        - name: KONG_URL
+          value: http://143.244.197.166:8001/consumers/
 ---
 apiVersion: v1
 kind: Service

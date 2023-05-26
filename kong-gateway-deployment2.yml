@@ -21,17 +21,11 @@ spec:
             - name: KONG_DATABASE
               value: postgres
             - name: KONG_PG_HOST
-              value: db-postgresql-ams3-69837-do-user-14134273-0.b.db.ondigitalocean.com
-            - name: KONG_PG_PORT
-              value: "25060"
+              value: kong-database
             - name: KONG_PG_USER
-              value: doadmin
+              value: kong
             - name: KONG_PG_PASSWORD
-              value: AVNS_tdqi_BmtjB5vC-iOdQh
-            - name: KONG_PG_DATABASE
-              value: defaultdb
-            - name: KONG_PG_SSL
-              value: "true"
+              value: kongpass
             - name: KONG_PROXY_ACCESS_LOG
               value: /dev/stdout
             - name: KONG_ADMIN_ACCESS_LOG
@@ -98,4 +92,5 @@ spec:
       port: 8445
       targetPort: 8445
   type: LoadBalancer
+
 
