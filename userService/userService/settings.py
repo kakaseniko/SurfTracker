@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-10ad5*ha_5&*n8odeqzutlo@22a7+475g4-0_r7efkvwgs^p!9"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -92,6 +92,10 @@ DATABASES = {
     #}
 }
 
+POSTGRES_NAME = ''
+POSTGRES_USER = ''
+POSTGRES_PASSWORD = ''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -127,7 +131,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-KONG_URL = "http://localhost:8001/"
+KONG_URL = 'http://surftracker-kong-gateway-1:8001/consumers/'
+RABBIT_HOST = '188.166.135.152'
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [

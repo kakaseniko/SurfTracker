@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kong-migrations
+spec:
+  template:
+    metadata:
+      name: kong-migrations
+    spec:
+      containers:
+        - name: kong-migrations
+          image: kong/kong-gateway:3.2.2.0
+          command: ["sh", "-c", "kong migrations bootstrap && tail -f /dev/null"]
+          env:
+            - name: KONG_DATABASE
+              value: postgres
+            - name: KONG_PG_HOST
+              value: db-postgresql-ams3-69837-do-user-14134273-0.b.db.ondigitalocean.com
+            - name: KONG_PG_PORT
+              value: "25060"
+            - name: KONG_PG_USER
+              value: doadmin
+            - name: KONG_PG_PASSWORD
+              value: AVNS_tdqi_BmtjB5vC-iOdQh
+            - name: KONG_PG_DATABASE
+              value: defaultdb
+            - name: KONG_PG_SSL
+              value: "true"
+            # Other environment variables needed for migrations
+      restartPolicy: Never
+

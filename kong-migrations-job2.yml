@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kong-migrations
+spec:
+  template:
+    spec:
+      containers:
+        - name: kong-migrations
+          image: kong/kong-gateway:3.2.2.0
+          env:
+            - name: KONG_DATABASE
+              value: postgres
+            - name: KONG_PG_HOST
+              value: kong-database
+            - name: KONG_PG_PASSWORD
+              value: kongpass
+            - name: KONG_PASSWORD
+              value: test
+          command: ["sh", "-c", "kong migrations bootstrap && tail -f /dev/null"]
+      restartPolicy: Never
+
+

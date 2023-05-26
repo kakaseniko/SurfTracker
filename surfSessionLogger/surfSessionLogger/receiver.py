@@ -1,8 +1,11 @@
 import pika
 from surfSessionAdmin.models import SurfSession
+import os
 
 def start():
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='surftracker-rabbitmq-1'))
+    host = os.environ.get('RABBIT_HOST')
+    #connection = pika.BlockingConnection(pika.ConnectionParameters(host='surftracker-rabbitmq-1'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=host))
     channel = connection.channel()
 
     channel.queue_declare(queue='gdpr')

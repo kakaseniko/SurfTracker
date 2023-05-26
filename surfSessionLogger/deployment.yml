@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: session-logger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: session-logger
+  template:
+    metadata:
+      labels:
+        app: session-logger
+    spec:
+      containers:
+      - name: session-logger
+        image: kakaseniko/sl
+        ports:
+        - containerPort: 8008
+        env:
+        - name: DEBUG
+          value: "false"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: session-logger
+spec:
+  selector:
+    app: session-logger
+  ports:
+    - port: 8008
+      targetPort: 8008
+  type: LoadBalancer    
+

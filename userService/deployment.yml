@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+      - name: user-service
+        image: kakaseniko/us:latest
+        ports:
+        - containerPort: 8005
+        env:
+        - name: DEBUG
+          value: "false"
+        - name: KONG_URL
+          value: http://143.244.197.166:8001/consumers/
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: us-service
+spec:
+  selector:
+    app: user-service
+  ports:
+    - port: 8005
+      targetPort: 8005
+  type: LoadBalancer

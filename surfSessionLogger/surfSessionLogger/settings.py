@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-74fh-y97$5(z4uoda_!gd(q%$qzh=h4+oh0v%k)(2fyzs5k814"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -81,7 +81,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
-    #"default": {
+    #"postgres": {
     #    'ENGINE': 'django.db.backends.postgresql',
     #    'NAME': os.environ.get('POSTGRES_NAME'),
     #    'USER': os.environ.get('POSTGRES_USER'),
@@ -90,7 +90,9 @@ DATABASES = {
     #    'PORT': 5432,
     #}
 }
-
+POSTGRES_NAME = ''
+POSTGRES_USER = ''
+POSTGRES_PASSWORD = ''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -116,7 +118,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+RABBIT_HOST = '188.166.135.152'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -126,3 +128,4 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+DJANGO_SUPERUSER_PASSWORD="admin"
