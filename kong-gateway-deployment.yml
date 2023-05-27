@@ -46,6 +46,16 @@ spec:
               value: http://localhost:8002
             - name: KONG_LICENSE_DATA
               value: ''
+            - name: KONG_PROXY_SSL_CERT
+              valueFrom:
+                secretKeyRef:
+                  name: my-secret
+                  key: tls.crt
+            - name: KONG_PROXY_SSL_CERT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: my-secret
+                  key: tls.key
 
           ports:
             - containerPort: 8000
