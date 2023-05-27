@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: session-logger
-        image: kakaseniko/sl
+        image: kakaseniko/sl:v1.4
         ports:
         - containerPort: 8008
         env:

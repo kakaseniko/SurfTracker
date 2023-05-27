@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: kakaseniko/us:latest
+        image: kakaseniko/us:v1.1
         ports:
         - containerPort: 8005
         env:
