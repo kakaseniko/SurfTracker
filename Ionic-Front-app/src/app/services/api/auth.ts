@@ -10,7 +10,7 @@ import { throwError } from 'rxjs';
 
 export class AuthService {
     //private base_url = 'http://localhost:8000/';
-    private base_url = 'http://143.244.197.166:8000/'
+    private base_url = 'https://143.244.197.166:8000/'
 
     constructor(private http: HttpClient) { }
 
