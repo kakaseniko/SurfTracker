@@ -8,7 +8,9 @@ import { Session } from 'src/app/models/session';
 
 export class SurfSessionService {
     //private base_url = 'http://localhost:8000/';
+
     private base_url = 'https://143.244.197.166:8443/'
+
 
     constructor(private http: HttpClient) { }
 
