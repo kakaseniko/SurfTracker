@@ -78,18 +78,21 @@ WSGI_APPLICATION = "userService.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 import os
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    },
     #"default": {
-    #    'ENGINE': 'django.db.backends.postgresql',
-    #    'NAME': os.environ.get('POSTGRES_NAME'),
-    #    'USER': os.environ.get('POSTGRES_USER'),
-    #    'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-    #    'HOST': 'db',
-    #    'PORT': 5432,
-    #}
+    #    "ENGINE": "django.db.backends.sqlite3",
+    #    "NAME": BASE_DIR / "db.sqlite3",
+    #},
+    "default": {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'defaultdb',
+        'USER': 'doadmin',
+        'PASSWORD': 'AVNS_p-bujJL4VDFB_4RQ6fO',
+        'HOST': 'db-postgresql-ams3-98725-user-service-do-user-14134273-0.b.db.ondigitalocean.com',
+        'PORT': 25060,
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+    }
 }
 
 POSTGRES_NAME = ''

@@ -14,12 +14,19 @@ spec:
     spec:
       containers:
       - name: session-logger
-        image: kakaseniko/sl:v1.4
+        image: kakaseniko/sl:pt
         ports:
         - containerPort: 8008
         env:
         - name: DEBUG
           value: "false"
+        #resources:
+        #  limits:
+        #    cpu: "500m"
+        #    memory: "512Mi"
+        #  requests:
+        #    cpu: "50m"
+        #    memory: "128Mi"
 
 ---
 apiVersion: v1
@@ -32,5 +39,24 @@ spec:
   ports:
     - port: 8008
       targetPort: 8008
-  type: LoadBalancer    
+  type: LoadBalancer   
+#---
+#apiVersion: autoscaling/v2
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: session-logger-hpa
+#spec:
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: session-logger
+#  minReplicas: 1
+#  maxReplicas: 3
+#  metrics:
+#    - type: Resource
+#      resource:
+#        name: cpu
+#        target:
+#          type: Utilization
+#          averageUtilization: 70 
 

@@ -14,14 +14,21 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: kakaseniko/us:v1.1
+        image: kakaseniko/us:pt
         ports:
         - containerPort: 8005
         env:
         - name: DEBUG
-          value: "false"
+          value: "true"
         - name: KONG_URL
           value: http://143.244.197.166:8001/consumers/
+        #resources:
+        #  limits:
+        #    cpu: "800m"
+        #    memory: "512Mi"
+        #  requests:
+        #    cpu: "50m"
+        #    memory: "128Mi"
 ---
 apiVersion: v1
 kind: Service
@@ -34,3 +41,23 @@ spec:
     - port: 8005
       targetPort: 8005
   type: LoadBalancer
+#---
+#apiVersion: autoscaling/v2
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: user-service-hpa
+#spec:
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: user-service
+#  minReplicas: 1
+#  maxReplicas: 3
+#  metrics:
+#    - type: Resource
+#      resource:
+#        name: cpu
+#        target:
+#          type: Utilization
+#          averageUtilization: 70
+

@@ -66,6 +66,13 @@ spec:
             - containerPort: 8445
             - containerPort: 8003
             - containerPort: 8004
+          #resources:
+          #  limits:
+          #    cpu: "800m"
+          #    memory: "512Mi"
+          #  requests:
+          #    cpu: "50m"
+          #    memory: "128Mi"
 ---
 apiVersion: v1
 kind: Service
@@ -108,4 +115,22 @@ spec:
       port: 8445
       targetPort: 8445
   type: LoadBalancer
-
+#---
+#apiVersion: autoscaling/v2
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: kong-gateway-hpa
+#spec:
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: kong-gateway
+#  minReplicas: 1
+#  maxReplicas: 3
+#  metrics:
+#    - type: Resource
+#      resource:
+#        name: cpu
+#        target:
+#          type: Utilization
+#          averageUtilization: 70

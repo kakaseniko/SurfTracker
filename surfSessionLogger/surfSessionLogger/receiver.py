@@ -5,7 +5,7 @@ import os
 def start():
     host = os.environ.get('RABBIT_HOST')
     #connection = pika.BlockingConnection(pika.ConnectionParameters(host='surftracker-rabbitmq-1'))
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='188.166.135.152'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbit'))
     #connection = pika.BlockingConnection(pika.ConnectionParameters(host=host))
     channel = connection.channel()
 

@@ -77,18 +77,21 @@ WSGI_APPLICATION = "surfSessionLogger.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 import os 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-    #"postgres": {
-    #    'ENGINE': 'django.db.backends.postgresql',
-    #    'NAME': os.environ.get('POSTGRES_NAME'),
-    #    'USER': os.environ.get('POSTGRES_USER'),
-    #    'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-    #    'HOST': 'db',
-    #    'PORT': 5432,
+    #"default": {
+    #    "ENGINE": "django.db.backends.sqlite3",
+    #    "NAME": BASE_DIR / "db.sqlite3",
     #}
+    "default": {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'defaultdb',
+        'USER': 'doadmin',
+        'PASSWORD': 'AVNS_zOogoiYZ4VBjh-p_8JU',
+        'HOST': 'db-postgresql-ams3-79095-sl-do-user-14134273-0.b.db.ondigitalocean.com',
+        'PORT': '25060',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+    }
 }
 POSTGRES_NAME = ''
 POSTGRES_USER = ''
